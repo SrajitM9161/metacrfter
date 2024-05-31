@@ -1,0 +1,59 @@
+// create a variable to hold your NFTs
+let nfts = [];
+
+// this function will take in some values as parameters, create an
+// NFT object using the parameters passed to it for its metadata, 
+// and store it in the variable above.
+function mintNFT(name, description, creator, owner) {
+    const nft = {
+        id: nfts.length + 1,  // unique identifier
+        name: name,
+        description: description,
+        creator: creator,
+        owner: owner
+    };
+    nfts.push(nft);
+}
+
+// this function simulates a transfer of ownership of an NFT
+function transferNFT(nftId, newOwner) {
+    const nft = nfts.find(nft => nft.id === nftId);
+    if (nft) {
+        nft.owner = newOwner;
+        console.log(`NFT ${nftId} has been transferred to ${newOwner}`);
+    } else {
+        console.log(`NFT ${nftId} not found`);
+    }
+}
+
+// create a "loop" that will go through an "array" of NFTs
+// and print their metadata with console.log()
+function listNFTs() {
+    nfts.forEach((nft, index) => {
+        console.log(`NFT ${index + 1}:`);
+        console.log(`ID: ${nft.id}`);
+        console.log(`Name: ${nft.name}`);
+        console.log(`Description: ${nft.description}`);
+        console.log(`Creator: ${nft.creator}`);
+        console.log(`Owner: ${nft.owner}`);
+        console.log('---');
+    });
+}
+
+// print the total number of NFTs we have minted to the console
+function getTotalSupply() {
+    return nfts.length;
+}
+
+// call your functions below this line
+mintNFT("CryptoKitty", "A cute crypto kitty", "diksha ", "mee");
+mintNFT("CryptoPunk", "A unique punk avatar", "Jane", "Bob");
+mintNFT("DigitalArt", "A piece of digital artwork", "ArtistName", "Charlie");
+
+listNFTs();
+console.log("Total Supply:", getTotalSupply());
+
+// Conduct a transaction - transfer ownership of an NFT
+transferNFT(1, "Srajit ");
+listNFTs();
+console.log("Total Supply:", getTotalSupply());
